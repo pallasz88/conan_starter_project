@@ -1,0 +1,34 @@
+{
+  "name": "Conan Starter Project",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopContainer",
+  "extensions": [
+    "ms-vscode.cmake-tools",
+    "ms-vscode.cpptools",
+    "ms-vscode.vscode-json",
+    "llvm-vs-code-extensions.vscode-clangd",
+    "GitHub.copilot-chat",
+    "eamodio.gitlens",
+    "ms-azuretools.vscode-docker",
+    "ms-vscode.cppdbg",
+    "GitHub.vscode-github-actions",
+    "llvm-vs-code-extensions.vscode-clangd"
+  ],
+  "settings": {
+    "cmake.configureOnOpen": true,
+    "cmake.buildDirectory": "${workspaceFolder}/build/default",
+    "clangd.path": "clangd",
+    "clangd.arguments": [
+      "--compile-commands-dir=${workspaceFolder}/build/default",
+      "--background-index",
+      "--clang-tidy"
+    ],
+    "C_Cpp.intelliSenseEngine": "disabled"
+  },
+  "postCreateCommand": "conan profile detect --force && conan install . --build missing -of build/default --profile default --profile:build default",
+  "forwardPorts": []
+}

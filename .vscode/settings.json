@@ -1,0 +1,21 @@
+{
+  "cmake.configureOnOpen": true,
+  "cmake.generator": "Ninja",
+  "cmake.cmakePath": "cmake",
+
+  "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+
+  "clangd.path": "clangd",
+  "clangd.arguments": [
+    "--compile-commands-dir=${workspaceFolder}/build/default",
+    "--background-index",
+    "--clang-tidy"
+  ],
+
+  "C_Cpp.intelliSenseEngine": "disabled",
+
+  "files.associations": {
+    "CMakeLists.txt": "cmake",
+    "conanfile.txt": "python"
+  }
+}

@@ -1,0 +1,11 @@
+[requires]
+spdlog/1.13.0
+fmt/10.2.1
+gtest/1.14.0
+
+[generators]
+CMakeToolchain
+CMakeDeps
+
+[options]
+spdlog/*:header_only=True
