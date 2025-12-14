@@ -1,8 +1,8 @@
 #include <spdlog/spdlog.h>
 #include <fmt/core.h>
+#include "myInclude.hpp"
 
 int main() {
-    spdlog::info("Hello, Conan Starter Project!");
-    fmt::print("Formatted output: {}\n", 42);
+    print();
     return 0;
 }

@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
+#include "myInclude.hpp"
 
 TEST(TestMain, BasicTest) {
+    print();
     EXPECT_EQ(1 + 1, 2);
 }
 

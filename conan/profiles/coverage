@@ -1,0 +1,8 @@
+[settings]
+build_type=Debug
+compiler.cppstd=17
+
+[conf]
+tools.build:cxxflags=["--coverage","-O0","-g"]
+tools.build:sharedlinkflags=["--coverage"]
+tools.build:exelinkflags=["--coverage"]
