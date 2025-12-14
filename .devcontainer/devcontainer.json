@@ -29,6 +29,6 @@
     ],
     "C_Cpp.intelliSenseEngine": "disabled"
   },
-  "postCreateCommand": "conan profile detect --force && conan install . --build missing -of build/default --profile default --profile:build default",
+  "postCreateCommand": "conan profile detect --force && conan install . --build=missing -of build --profile conan/profiles/debug --profile:build conan/profiles/debug",
   "forwardPorts": []
 }

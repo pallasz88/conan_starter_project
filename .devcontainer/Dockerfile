@@ -26,11 +26,11 @@ RUN conan profile detect --force
 
 # Clean and install dependencies
 RUN rm -rf build
-RUN conan install . --build=missing -of build --profile default --profile:build default
+RUN conan install . --build=missing -of build --profile conan/profiles/debug --profile:build conan/profiles/debug
 
 # Configure and build
-RUN cmake --preset conan-release
-RUN cmake --build --preset conan-release
+RUN cmake --preset debug
+RUN cmake --build --preset debug
 
 # Default command
 CMD ["/bin/bash"]

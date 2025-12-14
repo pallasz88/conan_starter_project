@@ -9,7 +9,7 @@
       "binaryDir": "${sourceDir}/build/default",
       "toolchainFile": "${sourceDir}/build/conan_toolchain.cmake",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_BUILD_TYPE": "Debug",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
         "CMAKE_PREFIX_PATH": "${sourceDir}/build"
       }
