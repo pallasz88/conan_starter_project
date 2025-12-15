@@ -1,6 +1,6 @@
 #pragma once
 
-#include <spdlog/spdlog.h>
 #include <fmt/core.h>
+#include <spdlog/spdlog.h>
 
 extern void print();

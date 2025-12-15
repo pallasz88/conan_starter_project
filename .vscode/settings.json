@@ -17,5 +17,8 @@
   "files.associations": {
     "CMakeLists.txt": "cmake",
     "conanfile.txt": "python"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "xaver.clang-format"
   }
 }

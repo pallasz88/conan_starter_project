@@ -1,8 +1,8 @@
-#include <spdlog/spdlog.h>
-#include <fmt/core.h>
 #include "myInclude.hpp"
+#include <fmt/core.h>
+#include <spdlog/spdlog.h>
 
 int main() {
-    print();
-    return 0;
+  print();
+  return 0;
 }
