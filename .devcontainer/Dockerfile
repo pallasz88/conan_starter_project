@@ -10,7 +10,13 @@ RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
     clangd \
+    cppcheck \
+    cpplint \
+    clang-tidy \
     && rm -rf /var/lib/apt/lists/*
+
+#Install pre-commit
+RUN pip3 install pre-commit --break-system-packages
 
 # Install Conan
 RUN pip3 install conan --break-system-packages
