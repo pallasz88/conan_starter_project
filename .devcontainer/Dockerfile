@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     cppcheck \
     cpplint \
     clang-tidy \
+    clang-format \
     && rm -rf /var/lib/apt/lists/*
 
 #Install pre-commit
