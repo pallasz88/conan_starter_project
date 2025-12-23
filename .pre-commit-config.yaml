@@ -6,6 +6,7 @@ repos:
       - id: clang-format
         args: [--style=file, "-i"]
       - id: clang-tidy
-        args: ["--quiet", "--extra-arg", "--std=c++2c", "--checks=cppcoreguidelines*"]
+        args: ["-p=build/default", "--quiet", "--extra-arg", "--std=c++17", "--checks=cppcoreguidelines*,bugprone*"]
       - id: cppcheck
-        args: ["--project=build/compile_commands.json", --library=boost, "-DBOOST_FIXTURE_TEST_SUITE(x, y)=", "-DBOOST_AUTO_TEST_SUITE_END()="]
+        pass_filenames: false
+        args: ["--project=build/default/compile_commands.json", "--library=gtest,fmt,spdlog"]

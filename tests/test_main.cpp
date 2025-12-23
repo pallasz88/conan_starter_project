@@ -1,12 +1,12 @@
-#include <gtest/gtest.h>
 #include "myInclude.hpp"
+#include <gtest/gtest.h>
 
 TEST(TestMain, BasicTest) {
-    print();
-    EXPECT_EQ(1 + 1, 2);
+  print();
+  EXPECT_EQ(1 + 1, 2);
 }
 
 int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }
