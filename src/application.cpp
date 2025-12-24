@@ -2,5 +2,6 @@
 
 void print() {
   spdlog::info("Hello, Conan Starter Project!");
-  fmt::print("Formatted output: {}\n", 42);
+  constexpr int arbitraryNumber = 42;
+  fmt::print("Formatted output: {}\n", arbitraryNumber);
 }
