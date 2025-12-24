@@ -9,4 +9,11 @@ repos:
         args: ["-p=build/default"]
       - id: cppcheck
         pass_filenames: false
-        args: ["--project=build/default/compile_commands.json", "--library=gtest,fmt,spdlog"]
+        entry: cppcheck --project=build/default/compile_commands.json
+        language: system
+      - id: include-what-you-use
+        entry: python3 tools/iwyu_hook.py -p build/default
+        language: system
+        files: '\.(c|cpp|h|hpp)$'
+        require_serial: true
+        pass_filenames: true

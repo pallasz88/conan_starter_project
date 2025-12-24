@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     cpplint \
     clang-tidy \
     clang-format \
+    iwyu \
     && rm -rf /var/lib/apt/lists/*
 
 #Install pre-commit
