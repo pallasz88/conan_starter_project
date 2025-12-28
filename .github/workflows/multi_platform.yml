@@ -18,41 +18,49 @@ jobs:
             preset: linux-gcc-release
             conan_compiler: gcc
             build_type: Release
+            config_flag: ""
 
           - os: ubuntu-latest
             preset: linux-clang-release
             conan_compiler: clang
             build_type: Release
+            config_flag: ""
 
           - os: windows-latest
             preset: windows-msvc-release
             conan_compiler: msvc
             build_type: Release
+            config_flag: "-C Release"
 
           - os: macos-latest
             preset: macos-clang-release
             conan_compiler: apple-clang
             build_type: Release
+            config_flag: ""
           
           - os: ubuntu-latest
             preset: linux-gcc-debug
             conan_compiler: gcc
             build_type: Debug
+            config_flag: ""
           
           - os: ubuntu-latest
             preset: linux-clang-debug
             conan_compiler: clang
             build_type: Debug
+            config_flag: ""
           
           - os: windows-latest
             preset: windows-msvc-debug
             conan_compiler: msvc
             build_type: Debug
+            config_flag: "-C Debug"
           
           - os: macos-latest
             preset: macos-clang-debug
             conan_compiler: apple-clang
             build_type: Debug
+            config_flag: ""
 
     steps:
       - uses: actions/checkout@v4
@@ -80,4 +88,4 @@ jobs:
         run: cmake --build --preset ${{ matrix.preset }}
 
       - name: Test
-        run: ctest --preset ${{ matrix.preset }} --output-on-failure
+        run: ctest --preset ${{ matrix.preset }} --output-on-failure ${{ matrix.config_flag }}
