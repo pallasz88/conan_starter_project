@@ -1,0 +1,82 @@
+name: Multplatform CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            preset: linux-gcc-release
+            conan_compiler: gcc
+            build_type: Release
+
+          - os: ubuntu-latest
+            preset: linux-clang-release
+            conan_compiler: clang
+            build_type: Release
+
+          - os: windows-latest
+            preset: windows-msvc-release
+            conan_compiler: msvc
+            build_type: Release
+
+          - os: macos-latest
+            preset: macos-clang-release
+            conan_compiler: apple-clang
+            build_type: Release
+          
+          - os: ubuntu-latest
+            preset: linux-gcc-debug
+            conan_compiler: gcc
+            build_type: Debug
+          
+          - os: ubuntu-latest
+            preset: linux-clang-debug
+            conan_compiler: clang
+            build_type: Debug
+          
+          - os: windows-latest
+            preset: windows-msvc-debug
+            conan_compiler: msvc
+            build_type: Debug
+          
+          - os: macos-latest
+            preset: macos-clang-debug
+            conan_compiler: apple-clang
+            build_type: Debug
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Conan
+        # uses: conan-io/setup-conan@v2 is not yet available for Conan 2.x
+        run: |
+          python -m pip install --upgrade pip
+          pip install "conan>=2.0"
+
+      - name: Conan Install
+        run: |
+          conan profile detect --force
+          conan install . \
+            --output-folder=build \
+            --build=missing \
+            -s compiler=${{ matrix.conan_compiler }} \
+            -s build_type=${{ matrix.build_type }}
+
+      - name: Configure CMake
+        run: cmake --preset ${{ matrix.preset }}
+
+      - name: Build
+        run: cmake --build --preset ${{ matrix.preset }}
+
+      - name: Test
+        run: ctest --preset ${{ matrix.preset }} --output-on-failure

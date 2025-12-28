@@ -43,6 +43,86 @@
                 "ENABLE_COVERAGE": "ON",
                 "CMAKE_TOOLCHAIN_FILE": "build/conan_toolchain.cmake"
             }
+        },
+        {
+            "name": "linux-gcc-release",
+            "inherits": "default",
+            "displayName": "Linux GCC Release",
+            "description": "Release build with GCC on Linux",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        },
+        {
+            "name": "linux-clang-release",
+            "inherits": "default",
+            "displayName": "Linux Clang Release",
+            "description": "Release build with Clang on Linux",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        },
+        {
+            "name": "windows-msvc-release",
+            "inherits": "default",
+            "displayName": "Windows MSVC Release",
+            "description": "Release build with MSVC on Windows",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        },
+        {
+            "name": "macos-clang-release",
+            "inherits": "default",
+            "displayName": "macOS Clang Release",
+            "description": "Release build with Apple Clang on macOS",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        },
+        {
+            "name": "linux-gcc-debug",
+            "inherits": "default",
+            "displayName": "Linux GCC Debug",
+            "description": "Debug build with GCC on Linux",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        },
+        {
+            "name": "linux-clang-debug",
+            "inherits": "default",
+            "displayName": "Linux Clang Debug",
+            "description": "Debug build with Clang on Linux",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        },
+        {
+            "name": "windows-msvc-debug",
+            "inherits": "default",
+            "displayName": "Windows MSVC Debug",
+            "description": "Debug build with MSVC on Windows",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        },
+        {
+            "name": "macos-clang-debug",
+            "inherits": "default",
+            "displayName": "macOS Clang Debug",
+            "description": "Debug build with Apple Clang on macOS",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
         }
 
     ],
@@ -62,6 +142,38 @@
         {
             "name": "coverage",
             "configurePreset": "coverage"
+        },
+        {
+            "name": "linux-gcc-release",
+            "configurePreset": "linux-gcc-release"
+        },
+        {
+            "name": "linux-clang-release",
+            "configurePreset": "linux-clang-release"
+        },
+        {
+            "name": "windows-msvc-release",
+            "configurePreset": "windows-msvc-release"
+        },
+        {
+            "name": "macos-clang-release",
+            "configurePreset": "macos-clang-release"
+        },
+        {
+            "name": "linux-gcc-debug",
+            "configurePreset": "linux-gcc-debug"
+        },
+        {
+            "name": "linux-clang-debug",
+            "configurePreset": "linux-clang-debug"
+        },
+        {
+            "name": "windows-msvc-debug",
+            "configurePreset": "windows-msvc-debug"
+        },
+        {
+            "name": "macos-clang-debug",
+            "configurePreset": "macos-clang-debug"
         }
     ],
     "testPresets": [
@@ -89,6 +201,62 @@
         {
             "name": "coverage",
             "configurePreset": "coverage",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "linux-gcc-release",
+            "configurePreset": "linux-gcc-release",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "linux-clang-release",
+            "configurePreset": "linux-clang-release",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "windows-msvc-release",
+            "configurePreset": "windows-msvc-release",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "macos-clang-release",
+            "configurePreset": "macos-clang-release",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "linux-gcc-debug",
+            "configurePreset": "linux-gcc-debug",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "linux-clang-debug",
+            "configurePreset": "linux-clang-debug",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "windows-msvc-debug",
+            "configurePreset": "windows-msvc-debug",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "macos-clang-debug",
+            "configurePreset": "macos-clang-debug",
             "output": {
                 "outputOnFailure": true
             }
