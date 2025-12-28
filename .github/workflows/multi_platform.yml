@@ -98,7 +98,6 @@ jobs:
       - name: Conan Install
         shell: bash
         run: |
-          conan profile detect --force
           conan install . \
             --output-folder=build \
             --build=missing \
