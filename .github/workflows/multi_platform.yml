@@ -35,7 +35,7 @@ jobs:
           - os: windows-latest
             preset: windows-msvc-release
             conan_compiler: msvc
-            compiler_version: 193
+            compiler_version: 194
             compiler_cppstd: 14
             compiler_runtime: dynamic
             build_type: Release
@@ -71,7 +71,7 @@ jobs:
           - os: windows-latest
             preset: windows-msvc-debug
             conan_compiler: msvc
-            compiler_version: 193
+            compiler_version: 194
             compiler_cppstd: 14
             compiler_runtime: dynamic
             build_type: Debug
