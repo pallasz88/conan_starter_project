@@ -114,8 +114,9 @@ jobs:
             -s compiler.cppstd=${{ matrix.compiler_cppstd }} \
             ${{ matrix.compiler_libcxx && format('-s compiler.libcxx={0}', matrix.compiler_libcxx) || '' }} \
             ${{ matrix.compiler_runtime && format('-s compiler.runtime={0}', matrix.compiler_runtime) || '' }} \
-            -s build_type=${{ matrix.build_type }}
-            --profile ${sourceDir}/ci/conan/${{ matrix.profile }}
+            -s build_type=${{ matrix.build_type }} \
+            --profile:build ${{ github.workspace }}/conan/profiles/${{ matrix.profile }} \
+            --profile:host ${{ github.workspace }}/conan/profiles/${{ matrix.profile }}
 
       - name: Configure CMake
         run: cmake --preset ${{ matrix.preset }}
