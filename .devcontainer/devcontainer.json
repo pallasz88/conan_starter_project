@@ -32,6 +32,6 @@
     ],
     "C_Cpp.intelliSenseEngine": "disabled"
   },
-  "postCreateCommand": "conan profile detect --force && conan install . --build=missing -of build --profile conan/profiles/debug --profile:build conan/profiles/debug",
+  "postCreateCommand": "conan profile detect --force && conan install . --build=missing -of build --profile conan/profiles/gcc_debug --profile:build conan/profiles/gcc_debug",
   "forwardPorts": []
 }
