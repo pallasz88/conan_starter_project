@@ -17,24 +17,28 @@ jobs:
           - os: ubuntu-latest
             preset: linux-gcc-release
             conan_compiler: gcc
+            compiler_version: 13
             build_type: Release
             config_flag: ""
 
           - os: ubuntu-latest
             preset: linux-clang-release
             conan_compiler: clang
+            compiler_version: 17
             build_type: Release
             config_flag: ""
 
           - os: windows-latest
             preset: windows-msvc-release
             conan_compiler: msvc
+            compiler_version: 1944
             build_type: Release
             config_flag: "-C Release"
 
           - os: macos-latest
             preset: macos-clang-release
             conan_compiler: apple-clang
+            compiler_version: 17
             build_type: Release
             config_flag: ""
           
@@ -53,12 +57,14 @@ jobs:
           - os: windows-latest
             preset: windows-msvc-debug
             conan_compiler: msvc
+            compiler_version: 1944
             build_type: Debug
             config_flag: "-C Debug"
           
           - os: macos-latest
             preset: macos-clang-debug
             conan_compiler: apple-clang
+            compiler_version: 17
             build_type: Debug
             config_flag: ""
 
@@ -79,6 +85,7 @@ jobs:
             --output-folder=build \
             --build=missing \
             -s compiler=${{ matrix.conan_compiler }} \
+            -s compiler.version=${{ matrix.compiler_version }} \
             -s build_type=${{ matrix.build_type }}
 
       - name: Configure CMake
