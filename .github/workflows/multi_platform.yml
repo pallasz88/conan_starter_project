@@ -35,7 +35,7 @@ jobs:
           - os: windows-latest
             preset: windows-msvc-release
             conan_compiler: msvc
-            compiler_version: 195
+            compiler_version: 193
             compiler_cppstd: 14
             build_type: Release
             config_flag: "-C Release"
@@ -70,7 +70,7 @@ jobs:
           - os: windows-latest
             preset: windows-msvc-debug
             conan_compiler: msvc
-            compiler_version: 195
+            compiler_version: 193
             compiler_cppstd: 14
             build_type: Debug
             config_flag: "-C Debug"
