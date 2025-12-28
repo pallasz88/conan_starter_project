@@ -34,7 +34,7 @@ RUN conan profile detect --force
 
 # Clean and install dependencies
 RUN rm -rf build
-RUN conan install . --build=missing -of build --profile conan/profiles/gcc_debug --profile:build conan/profiles/gcc_debug
+RUN conan install . --build=missing -of build --profile conan/profiles/linux_gcc_debug --profile:build conan/profiles/linux_gcc_debug
 
 # Configure and build
 RUN cmake --preset debug

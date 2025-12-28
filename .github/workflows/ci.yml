@@ -26,7 +26,7 @@ jobs:
 
     - name: Install dependencies
       working-directory: ${{ github.workspace }}
-      run: conan install . --build missing --profile conan/profiles/gcc_debug --profile:build conan/profiles/gcc_debug --output-folder=build
+      run: conan install . --build missing --profile conan/profiles/linux_gcc_debug --profile:build conan/profiles/linux_gcc_debug --output-folder=build
 
     - name: Configure CMake
       working-directory: ${{ github.workspace }}

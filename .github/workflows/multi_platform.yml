@@ -22,6 +22,7 @@ jobs:
             compiler_libcxx: libstdc++11
             build_type: Release
             config_flag: ""
+            profile: linux-gcc-release
 
           - os: ubuntu-latest
             preset: linux-clang-release
@@ -31,6 +32,7 @@ jobs:
             compiler_libcxx: libstdc++11
             build_type: Release
             config_flag: ""
+            profile: linux-clang-release
 
           - os: windows-latest
             preset: windows-msvc-release
@@ -40,6 +42,7 @@ jobs:
             compiler_runtime: dynamic
             build_type: Release
             config_flag: "-C Release"
+            profile: windows-msvc-release
 
           - os: macos-latest
             preset: macos-clang-release
@@ -49,6 +52,7 @@ jobs:
             compiler_libcxx: libc++
             build_type: Release
             config_flag: ""
+            profile: macos-clang-release
           
           - os: ubuntu-latest
             preset: linux-gcc-debug
@@ -58,6 +62,7 @@ jobs:
             compiler_libcxx: libstdc++11
             build_type: Debug
             config_flag: ""
+            profile: linux-gcc-debug
           
           - os: ubuntu-latest
             preset: linux-clang-debug
@@ -67,6 +72,7 @@ jobs:
             compiler_libcxx: libstdc++11
             build_type: Debug
             config_flag: ""
+            profile: linux-clang-debug
           
           - os: windows-latest
             preset: windows-msvc-debug
@@ -76,6 +82,7 @@ jobs:
             compiler_runtime: dynamic
             build_type: Debug
             config_flag: "-C Debug"
+            profile: windows-msvc-debug
           
           - os: macos-latest
             preset: macos-clang-debug
@@ -85,6 +92,7 @@ jobs:
             compiler_libcxx: libc++
             build_type: Debug
             config_flag: ""
+            profile: macos-clang-debug
 
     steps:
       - uses: actions/checkout@v4
@@ -107,6 +115,7 @@ jobs:
             ${{ matrix.compiler_libcxx && format('-s compiler.libcxx={0}', matrix.compiler_libcxx) || '' }} \
             ${{ matrix.compiler_runtime && format('-s compiler.runtime={0}', matrix.compiler_runtime) || '' }} \
             -s build_type=${{ matrix.build_type }}
+            --profile ${sourceDir}/ci/conan/${{ matrix.profile }}
 
       - name: Configure CMake
         run: cmake --preset ${{ matrix.preset }}
