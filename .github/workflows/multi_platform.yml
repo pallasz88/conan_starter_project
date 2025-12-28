@@ -37,6 +37,7 @@ jobs:
             conan_compiler: msvc
             compiler_version: 193
             compiler_cppstd: 14
+            compiler_runtime: dynamic
             build_type: Release
             config_flag: "-C Release"
 
@@ -72,6 +73,7 @@ jobs:
             conan_compiler: msvc
             compiler_version: 193
             compiler_cppstd: 14
+            compiler_runtime: dynamic
             build_type: Debug
             config_flag: "-C Debug"
           
@@ -104,6 +106,7 @@ jobs:
             -s compiler.version=${{ matrix.compiler_version }} \
             -s compiler.cppstd=${{ matrix.compiler_cppstd }} \
             ${{ matrix.compiler_libcxx && format('-s compiler.libcxx={0}', matrix.compiler_libcxx) || '' }} \
+            ${{ matrix.compiler_runtime && format('-s compiler.runtime={0}', matrix.compiler_runtime) || '' }} \
             -s build_type=${{ matrix.build_type }}
 
       - name: Configure CMake
