@@ -36,7 +36,7 @@ jobs:
             preset: windows-msvc-release
             conan_compiler: msvc
             compiler_version: 194
-            compiler_cppstd: 14
+            compiler_cppstd: 17
             compiler_runtime: dynamic
             build_type: Release
             config_flag: "-C Release"
@@ -72,7 +72,7 @@ jobs:
             preset: windows-msvc-debug
             conan_compiler: msvc
             compiler_version: 194
-            compiler_cppstd: 14
+            compiler_cppstd: 17
             compiler_runtime: dynamic
             build_type: Debug
             config_flag: "-C Debug"
