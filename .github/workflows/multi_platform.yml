@@ -37,7 +37,6 @@ jobs:
             conan_compiler: msvc
             compiler_version: 195
             compiler_cppstd: 14
-            compiler_libcxx: ""
             build_type: Release
             config_flag: "-C Release"
 
@@ -73,7 +72,6 @@ jobs:
             conan_compiler: msvc
             compiler_version: 195
             compiler_cppstd: 14
-            compiler_libcxx: ""
             build_type: Debug
             config_flag: "-C Debug"
           
@@ -105,7 +103,7 @@ jobs:
             -s compiler=${{ matrix.conan_compiler }} \
             -s compiler.version=${{ matrix.compiler_version }} \
             -s compiler.cppstd=${{ matrix.compiler_cppstd }} \
-            -s compiler.libcxx=${{ matrix.compiler_libcxx }} \
+            ${{ matrix.compiler_libcxx && format('-s compiler.libcxx={0}', matrix.compiler_libcxx) || '' }} \
             -s build_type=${{ matrix.build_type }}
 
       - name: Configure CMake
