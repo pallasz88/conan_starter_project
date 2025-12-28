@@ -65,17 +65,22 @@
             }
         },
         {
-            "name": "windows-msvc-release",
-            "displayName": "Windows MSVC Release",
-            "description": "Release build with MSVC on Windows",
+            "name": "windows-msvc-base",
+            "hidden": true,
+            "displayName": "Windows MSVC Base",
             "generator": "Visual Studio 17 2022",
-            "binaryDir": "${sourceDir}/build/windows-msvc-release",
             "toolchainFile": "${sourceDir}/build/conan_toolchain.cmake",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release",
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
                 "CMAKE_PREFIX_PATH": "${sourceDir}/build"
             }
+        },
+        {
+            "name": "windows-msvc-release",
+            "inherits": "windows-msvc-base",
+            "displayName": "Windows MSVC Release",
+            "description": "Release build with MSVC on Windows",
+            "binaryDir": "${sourceDir}/build/windows-msvc-release"
         },
         {
             "name": "macos-clang-release",
@@ -109,16 +114,10 @@
         },
         {
             "name": "windows-msvc-debug",
+            "inherits": "windows-msvc-base",
             "displayName": "Windows MSVC Debug",
             "description": "Debug build with MSVC on Windows",
-            "generator": "Visual Studio 17 2022",
-            "binaryDir": "${sourceDir}/build/windows-msvc-debug",
-            "toolchainFile": "${sourceDir}/build/conan_toolchain.cmake",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-                "CMAKE_PREFIX_PATH": "${sourceDir}/build"
-            }
+            "binaryDir": "${sourceDir}/build/windows-msvc-debug"
         },
         {
             "name": "macos-clang-debug",
@@ -159,7 +158,8 @@
         },
         {
             "name": "windows-msvc-release",
-            "configurePreset": "windows-msvc-release"
+            "configurePreset": "windows-msvc-release",
+            "configuration": "Release"
         },
         {
             "name": "macos-clang-release",
@@ -175,7 +175,8 @@
         },
         {
             "name": "windows-msvc-debug",
-            "configurePreset": "windows-msvc-debug"
+            "configurePreset": "windows-msvc-debug",
+            "configuration": "Debug"
         },
         {
             "name": "macos-clang-debug",
