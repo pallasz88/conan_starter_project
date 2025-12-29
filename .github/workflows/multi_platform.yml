@@ -10,6 +10,19 @@ jobs:
   build:
     runs-on: ${{ matrix.os }}
 
+    env:
+      CONAN_ARGS: >
+        --output-folder=build
+        --build=missing
+        -s compiler=${{ matrix.conan_compiler }}
+        -s compiler.version=${{ matrix.compiler_version }}
+        -s compiler.cppstd=${{ matrix.compiler_cppstd }}
+        ${{ matrix.compiler_libcxx && format('-s compiler.libcxx={0}', matrix.compiler_libcxx) || '' }}
+        ${{ matrix.compiler_runtime && format('-s compiler.runtime={0}', matrix.compiler_runtime) || '' }}
+        -s build_type=${{ matrix.build_type }}
+        --profile:build ${{ github.workspace }}/conan/profiles/${{ matrix.profile }}
+        --profile:host ${{ github.workspace }}/conan/profiles/${{ matrix.profile }}
+
     strategy:
       fail-fast: false
       matrix:
@@ -105,17 +118,7 @@ jobs:
 
       - name: Conan Install
         run: >
-          conan install .
-            --output-folder=build
-            --build=missing
-            -s compiler=${{ matrix.conan_compiler }}
-            -s compiler.version=${{ matrix.compiler_version }}
-            -s compiler.cppstd=${{ matrix.compiler_cppstd }}
-            ${{ matrix.compiler_libcxx && format('-s compiler.libcxx={0}', matrix.compiler_libcxx) || '' }}
-            ${{ matrix.compiler_runtime && format('-s compiler.runtime={0}', matrix.compiler_runtime) || '' }}
-            -s build_type=${{ matrix.build_type }}
-            --profile:build ${{ github.workspace }}/conan/profiles/${{ matrix.profile }}
-            --profile:host ${{ github.workspace }}/conan/profiles/${{ matrix.profile }}
+          conan install . ${{ env.CONAN_ARGS }}
 
       - name: Configure CMake
         run: cmake --preset ${{ matrix.preset }}
