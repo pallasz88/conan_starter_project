@@ -110,6 +110,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Select compiler (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          if [ "${{ matrix.conan_compiler }}" = "clang" ]; then
+            echo "CC=clang" >> $GITHUB_ENV
+            echo "CXX=clang++" >> $GITHUB_ENV
+          else
+            echo "CC=gcc-${{ matrix.compiler_version }}" >> $GITHUB_ENV
+            echo "CXX=g++-${{ matrix.compiler_version }}" >> $GITHUB_ENV
+          fi
+
+
       - name: Install Conan
         # uses: conan-io/setup-conan@v2 is not yet available for Conan 2.x
         run: |
