@@ -1,4 +1,5 @@
 [settings]
+os=Windows
 compiler=msvc
 compiler.version=194
 compiler.runtime=dynamic
